@@ -1,5 +1,5 @@
 blueprint:
-  name: Ataraxia Lighting – Hue Defaults (v1.15)
+  name: Ataraxia Lighting – Hue Defaults (v1.15.1)
   description: >
     Apply Philips Hue defaults via Zigbee2MQTT without a reference device.
 
@@ -17,6 +17,8 @@ blueprint:
 
     Parameters
       • MQTT Base Topic (text, default: zigbee2mqtt)
+      • Hue Native Control (bool, default false)
+      • Effect Color Mode (list)
       • state_action (bool, default: false)
       • color_sync (bool, default: true)
       • transition (number, default: 0.4)
