@@ -27,6 +27,7 @@ blueprint:
       • Target devices (list)
 
     Changelog
+      • v1.15.1: added hue native control option, and effect color mode.
       • v1.15: Remove unsupported blueprint keys (icon/tags/input_order). Keep always-push of execute_if_off flags.
       • v1.14: Added configurable MQTT base topic; docs tables (no logic change)
       • v1.13: Docs polish
@@ -51,6 +52,24 @@ blueprint:
         text: {}
 
     # DEVICE OPTIONS (Z2M per-device)
+    hue_native_control:
+      name: Hue Native Control (device option)
+      description: When true, z2m uses phillips hue atomoic commands instead of ZCL Default = false.
+      default: false
+      selector:
+        boolean: {}
+
+    effect_color_mode:
+      name: Effect Color Mode (device option)
+      description: When true, Z2M also publishes action events. Default = false
+      default: "stop"
+      selector:
+        select:
+          mode: dropdown
+          options:
+            - "stop"
+            - "update"
+        
     state_action:
       name: state_action (device option)
       description: When true, Z2M also publishes action events. Default = false.
@@ -147,6 +166,8 @@ variables:
   in_power_on_behavior: !input power_on_behavior
   in_publish_delay: !input publish_delay
   in_configure_reporting: !input configure_reporting
+  in_hue_native_control: !input hue_native_control
+  in_effect_color_mode: !input effect_color_mode
 
   # Constant defaults for Hue
   color_temp_startup_default: 370
@@ -224,6 +245,22 @@ sequence:
         - delay: "{{ in_publish_delay }}"
 
         # 2) Light defaults (/set) – ONE KEY PER PUBLISH (and ALWAYS push execute_if_off flags)
+        # hue_native_control
+        - action: mqtt.publish
+          data:
+            topic: "{{ set_topic }}"
+            payload: >-
+              {{ { 'hue_native_control': in_hue_native_control } | tojson }}
+        - delay: "{{ in_publish_delay }}"
+
+        # effect_color_mode
+        - action: mqtt.publish
+          data:
+            topic: "{{ set_topic }}"
+            payload: >-
+              {{ { 'effect_color_mode': in_effect_color_mode } | tojson }}
+        - delay: "{{ in_publish_delay }}"
+        
         # power_on_behavior
         - action: mqtt.publish
           data:
