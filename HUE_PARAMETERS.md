@@ -11,7 +11,7 @@
 | Name | Default | What it does |
 |---|---|---|
 | **MQTT Base Topic** | `zigbee2mqtt` | Root MQTT topic for Z2M (e.g. `zigbee2mqtt`). |
-| **hue_native_control** | `false` | Use Phillips specific protocol to send atomic commands instead of traditional ZCL commands. (Allows updating while off on older bulbs that don't support the `"update_while_off"` option) |
+| **hue_native_control** | `false` | Use Phillips specific protocol to send atomic commands instead of traditional ZCL commands. (Allows updating while off on older bulbs that don't support the `***.update_while_off` options) |
 | **effect_color_mode** | `stop` | What happens when color is changed while an effect is active (requires Hue native control): `"stop"`, or `"update"`  |
 | **state_action** | `false` | Also publish action events from Z2M. |
 | **color_sync** | `true` | Keep `xy` and `color_temp` modes in sync. |
