@@ -187,6 +187,8 @@ variables:
         'color_sync': in_color_sync,
         'state_action': in_state_action,
         'optimistic': in_optimistic,
+        'hue_native_control': in_hue_native_control,
+        'effect_color_mode': in_effect_color_mode,
         'qos': 0
       } }}
 
@@ -247,21 +249,6 @@ sequence:
         - delay: "{{ in_publish_delay }}"
 
         # 2) Light defaults (/set) – ONE KEY PER PUBLISH (and ALWAYS push execute_if_off flags)
-        # hue_native_control
-        - action: mqtt.publish
-          data:
-            topic: "{{ set_topic }}"
-            payload: >-
-              {{ { 'hue_native_control': in_hue_native_control } | tojson }}
-        - delay: "{{ in_publish_delay }}"
-
-        # effect_color_mode
-        - action: mqtt.publish
-          data:
-            topic: "{{ set_topic }}"
-            payload: >-
-              {{ { 'effect_color_mode': in_effect_color_mode } | tojson }}
-        - delay: "{{ in_publish_delay }}"
         
         # power_on_behavior
         - action: mqtt.publish
