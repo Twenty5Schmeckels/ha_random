@@ -85,6 +85,10 @@ Hue doesn’t expose many vendor-specific options. Hard-coded here are:
   Default: **true**. Allows brightness updates while off.  
   **Why it matters:** Ensures adaptive brightness changes are retained while the light is off.
 
+- ### `hue_native_control`
+  Default: **false**. True allows Z2M to use Phillips Specific protocol to send single atomic commands.  
+  **Why it matters:** Ensures adaptive brightness & color updates are stored while off, so they’re correct on next power-on for older bulbs that do not support these options via the `execute_if_off` options.
+
 - ### Device options that affect adaptive lighting
   - **`transition`** (default **0.4s**): Smooth fade time for adaptive updates.  
   - **`color_sync`** (default **true**): Keeps color modes aligned for adaptive color temperature control.  
