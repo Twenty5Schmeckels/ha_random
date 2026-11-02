@@ -56,7 +56,7 @@ blueprint:
     # DEVICE OPTIONS (Z2M per-device)
     hue_native_control:
       name: Hue Native Control (device option)
-      description: When true, z2m uses phillips hue atomoic commands instead of ZCL. Default = false.
+      description: When true, z2m uses phillips hue atomic commands instead of ZCL. Default = false.
       default: false
       selector:
         boolean: {}
