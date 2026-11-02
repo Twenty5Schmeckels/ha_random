@@ -56,14 +56,14 @@ blueprint:
     # DEVICE OPTIONS (Z2M per-device)
     hue_native_control:
       name: Hue Native Control (device option)
-      description: When true, z2m uses phillips hue atomoic commands instead of ZCL Default = false.
+      description: When true, z2m uses phillips hue atomoic commands instead of ZCL. Default = false.
       default: false
       selector:
         boolean: {}
 
     effect_color_mode:
       name: Effect Color Mode (device option)
-      description: When true, Z2M also publishes action events. Default = false
+      description: What happens when color is changed while an effect is active (requires Hue native control). Default = stop.
       default: "stop"
       selector:
         select:
