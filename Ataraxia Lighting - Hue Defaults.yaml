@@ -17,8 +17,8 @@ blueprint:
 
     Parameters
       • MQTT Base Topic (text, default: zigbee2mqtt)
-      • Hue Native Control (bool, default false)
-      • Effect Color Mode (list)
+      • Hue Native Control (bool, default: false)
+      • Effect Color Mode (list, default: stop)
       • state_action (bool, default: false)
       • color_sync (bool, default: true)
       • transition (number, default: 0.4)
